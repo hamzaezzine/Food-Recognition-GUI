@@ -1,1 +1,1 @@
-# Food-Recognition-GUI
+# Food Recognition GUI
