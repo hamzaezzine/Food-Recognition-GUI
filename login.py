@@ -1,4 +1,6 @@
+from CTkMessagebox import CTkMessagebox
 import customtkinter
+import re 
 
 email_login = None
 pass_login = None
@@ -6,6 +8,20 @@ pass_login = None
 def login():
     email_value = email_login.get()
     password_value = pass_login.get()
+        
+    if not email_value or not password_value:
+        CTkMessagebox(title="Error", message="Please enter both email and password", icon="cancel")
+        return
+    
+    email_regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+    if not re.match(email_regex, email_value):
+        CTkMessagebox(title="Error", message="Please enter a valid email address", icon="cancel")
+        return
+
+    if len(password_value) < 6:
+        CTkMessagebox(title="Error", message="Password must be at least 6 characters long", icon="cancel")
+        return
+
     print(f"Email: {email_value}\nPassword: {password_value}")
 
 def login_view(content_frame, clear_frame):
