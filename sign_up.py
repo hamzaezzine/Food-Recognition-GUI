@@ -1,12 +1,23 @@
 import customtkinter
 from CTkMessagebox import CTkMessagebox
 import re
+from database import Database
+
+direction_db = "users.db"  
+db = Database(direction_db)
 
 firstname_signup = None
 lastname_signup = None
 email_signup = None
 pass_signup = None
 repeat_pass_signup = None
+
+def Clear():
+    firstname_signup.delete(0, 'end')
+    lastname_signup.delete(0, 'end')
+    email_signup.delete(0, 'end')
+    pass_signup.delete(0, 'end')
+    repeat_pass_signup.delete(0, 'end')
 
 def reg():
     firstname_value = firstname_signup.get()
@@ -31,8 +42,15 @@ def reg():
         CTkMessagebox(title="Error", message="Passwords do not match", icon="cancel")
         return
     
-
-    print(f"firstname_value: {firstname_value}\nlastname_value: {lastname_value}\nemail_value: {email_value}\npass_value: {pass_value}\nrepeat_pass_value: {repeat_pass_value}")
+    existing_user = db.get_user(email_value)
+    if existing_user:
+        CTkMessagebox(title="Error", message="Email is already registered", icon="cancel")
+        return
+    else:
+        db.insert(firstname_value, lastname_value, email_value, pass_value)
+        CTkMessagebox(title="check", message="User successfully registered!", icon="check")
+        print(f"firstname_value: {firstname_value}\nlastname_value: {lastname_value}\nemail_value: {email_value}\npass_value: {pass_value}\nrepeat_pass_value: {repeat_pass_value}")
+        Clear()
 
 
 def signup_view(content_frame, clear_frame):
