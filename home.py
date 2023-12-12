@@ -64,11 +64,13 @@ def home_view(content_frame, clear_frame, user_email):
 
     #  Home Frame
     def predict_action():
+        from model import predict_food
+        
         global uploaded_file_info
+        predicted = predict_food(uploaded_file_info["unique_file_name"])
+        print(predicted)
+        
 
-        print(uploaded_file_info["unique_file_name"])
-        
-        
 
     def cancel_action():
         uploaded_image_canvas.grid_forget()
