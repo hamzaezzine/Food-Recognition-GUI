@@ -64,7 +64,11 @@ def home_view(content_frame, clear_frame, user_email):
 
     #  Home Frame
     def predict_action():
-        pass
+        global uploaded_file_info
+
+        print(uploaded_file_info["unique_file_name"])
+        
+        
 
     def cancel_action():
         uploaded_image_canvas.grid_forget()
@@ -76,11 +80,11 @@ def home_view(content_frame, clear_frame, user_email):
     uploaded_file_info = None 
 
     predict_button = customtkinter.CTkButton(home_frame, text="Predict", height=50, width=100, command=predict_action)
-    predict_button.grid(row=3, column=0, pady=(10, 0), padx=(200, 0))
+    predict_button.grid(row=3, column=0, pady=10, padx=10)
     predict_button.grid_forget()
 
     cancel_button = customtkinter.CTkButton(home_frame, text="Cancel", height=50, width=100, command=cancel_action)
-    cancel_button.grid(row=3, column=1, pady=(10, 0), padx=(0, 200))
+    cancel_button.grid(row=3, column=1, pady=10, padx=10)
     cancel_button.grid_forget()
 
     def upload_file():
@@ -115,12 +119,12 @@ def home_view(content_frame, clear_frame, user_email):
             shutil.copyfile(uploaded_file_info['file_path'], destination_path)
 
             img = Image.open(destination_path)
-            resized_img = img.resize((500, 400), Image.LANCZOS)  # Use the correct resampling filter
+            resized_img = img.resize((500, 400), Image.LANCZOS) 
             tk_image = ImageTk.PhotoImage(resized_img)
 
             uploaded_image_canvas.configure(width=resized_img.width, height=resized_img.height)
             uploaded_image_canvas.create_image(0, 0, image=tk_image, anchor="nw")
-            uploaded_image_canvas.grid(row=2, column=0, pady=10, padx=(240, 0))
+            uploaded_image_canvas.grid(row=3, column=0, pady=10, padx=(340, 0))
 
             upload_button.configure(text="Upload File")
             predict_button.grid(row=4, column=0, pady=(10, 0), padx=(200, 0))
