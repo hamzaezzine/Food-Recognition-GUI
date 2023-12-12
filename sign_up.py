@@ -1,10 +1,6 @@
 import customtkinter
 from CTkMessagebox import CTkMessagebox
 import re
-from database import Database
-
-direction_db = "users.db"  
-db = Database(direction_db)
 
 firstname_signup = None
 lastname_signup = None
@@ -19,7 +15,7 @@ def Clear():
     pass_signup.delete(0, 'end')
     repeat_pass_signup.delete(0, 'end')
 
-def reg():
+def reg(db):
     firstname_value = firstname_signup.get()
     lastname_value = lastname_signup.get()
     email_value = email_signup.get()
@@ -49,11 +45,10 @@ def reg():
     else:
         db.insert(firstname_value, lastname_value, email_value, pass_value)
         CTkMessagebox(title="check", message="User successfully registered!", icon="check")
-        print(f"firstname_value: {firstname_value}\nlastname_value: {lastname_value}\nemail_value: {email_value}\npass_value: {pass_value}\nrepeat_pass_value: {repeat_pass_value}")
         Clear()
 
 
-def signup_view(content_frame, clear_frame):
+def signup_view(content_frame, clear_frame, db):
     from login import login_view
     clear_frame(content_frame)
     
@@ -77,9 +72,9 @@ def signup_view(content_frame, clear_frame):
     repeat_pass_signup = customtkinter.CTkEntry(master=content_frame, width=290, height=32, placeholder_text="Repeat Password", show="*")
     repeat_pass_signup.pack(pady=12, padx=10)
 
-    button_signup = customtkinter.CTkButton(master=content_frame, width=290, height=32, text="Sign up", command=reg)
+    button_signup = customtkinter.CTkButton(master=content_frame, width=290, height=32, text="Sign up", command=lambda: reg(db))
     button_signup.pack(pady=12, padx=10)
 
     login_label = customtkinter.CTkLabel(master=content_frame, text="Already a user? Login", cursor="hand2")
-    login_label.bind("<Button-1>", lambda _: login_view(content_frame, clear_frame))
+    login_label.bind("<Button-1>", lambda _: login_view(content_frame, clear_frame, db))
     login_label.pack(pady=12, padx=10)
