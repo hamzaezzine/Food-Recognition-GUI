@@ -34,13 +34,21 @@ class Database:
             return [row]  
         else:
             return None
+        
+    def get_user_by_id(self, id):
+        self.cur.execute("SELECT * FROM users WHERE id = ?", (id,))
+        row = self.cur.fetchone()
+        if row:
+            return [row]  
+        else:
+            return None
 
-    def update_user(self, firstname, lastname, email):
-        self.cur.execute('UPDATE users SET firstname = ?, lastname = ? WHERE email = ?',(firstname,lastname, email))
+    def update_user(self, firstname, lastname, email, id):
+        self.cur.execute('UPDATE users SET firstname = ?, lastname = ?, email = ? WHERE id = ?',(firstname,lastname, email, id))
         self.con.commit()
 
-    def update_pass(self, password, email):
-        self.cur.execute('UPDATE users SET password = ?WHERE email = ?',(password, email))
+    def update_pass(self, password, id):
+        self.cur.execute('UPDATE users SET password = ? WHERE id = ?',(password, id))
         self.con.commit()
 
     def remove_user(self, email):

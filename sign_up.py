@@ -1,6 +1,7 @@
 import customtkinter
 from CTkMessagebox import CTkMessagebox
 import re
+import hashlib
 
 firstname_signup = None
 lastname_signup = None
@@ -43,7 +44,7 @@ def reg(db):
         CTkMessagebox(title="Error", message="Email is already registered", icon="cancel")
         return
     else:
-        db.insert(firstname_value, lastname_value, email_value, pass_value)
+        db.insert(firstname_value, lastname_value, email_value, hashlib.md5(pass_value.encode()).hexdigest())
         CTkMessagebox(title="check", message="User successfully registered!", icon="check")
         Clear()
 

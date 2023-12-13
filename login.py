@@ -2,6 +2,7 @@ from CTkMessagebox import CTkMessagebox
 import customtkinter
 import re 
 from home import home_view
+import hashlib
 
 email_login = None
 pass_login = None
@@ -24,8 +25,8 @@ def login(content_frame, clear_frame, db):
     
     user = db.get_user(email_value)
 
-    if user and user[0][4] == password_value: 
-        home_view(content_frame, clear_frame, user[0][1]) 
+    if user and user[0][4] == hashlib.md5(password_value.encode()).hexdigest(): 
+        home_view(content_frame, clear_frame, user[0][0], db) 
         return  
         
     else:
