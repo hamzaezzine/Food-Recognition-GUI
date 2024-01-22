@@ -27,7 +27,7 @@ Fruits and Vegetables Image Recognition Dataset Source: [Fruits and Vegetables I
   the dataset contains images of the following food items:
 
   * fruits:  banana, apple, pear, grapes, orange, kiwi, watermelon, pomegranate, pineapple, mango.  
-   * vegetables:  cucumber, carrot, capsicum, onion, potato, lemon, tomato, raddish, beetroot, cabbage, lettuce, spinach, soy bean, cauliflower, bell pepper, chilli pepper, turnip, corn, sweetcorn, sweet potato, paprika, jalepeño, ginger, garlic, peas, eggplant.
+  * vegetables:  cucumber, carrot, capsicum, onion, potato, lemon, tomato, raddish, beetroot, cabbage, lettuce, spinach, soy bean, cauliflower, bell pepper, chilli pepper, turnip, corn, sweetcorn, sweet potato, paprika, jalepeño, ginger, garlic, peas, eggplant.
 
 
   2. Content :   
@@ -66,21 +66,21 @@ python main.py
 ### Screenshots
 
 Login 
-![login](screenshots/login.png)
+![login](screenshots/login.PNG)
 
 Sign up 
-![Sign up ](screenshots/signup.png)
+![Sign up ](screenshots/signup.PNG)
 
 Home 
-![Home](screenshots/home.png)
+![Home](screenshots/home.PNG)
 
 Home 
-![Home](screenshots/home2.png)
+![Home](screenshots/home2.PNG)
 
 Result 
-![Result](screenshots/home3.png)
+![Result](screenshots/home3.PNG)
 
 Profile 
-![Profile](screenshots/profile.png)
+![Profile](screenshots/profile.PNG)
 
 
