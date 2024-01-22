@@ -7,29 +7,29 @@ import requests
 
 
 def charts(predicted):
-    food_data = {
-        "items": [
-            {
-                "name": "carrot",
-                "calories": 34.0,
-                "serving_size_g": 100.0,
-                "fat_total_g": 0.2,
-                "fat_saturated_g": 0.0,
-                "protein_g": 0.8,
-                "sodium_mg": 57,
-                "potassium_mg": 30,
-                "cholesterol_mg": 0,
-                "carbohydrates_total_g": 8.3,
-                "fiber_g": 3.0,
-                "sugar_g": 3.4,
-            }
-        ]
-    }
+    # food_data = {
+    #     "items": [
+    #         {
+    #             "name": "carrot",
+    #             "calories": 34.0,
+    #             "serving_size_g": 100.0,
+    #             "fat_total_g": 0.2,
+    #             "fat_saturated_g": 0.0,
+    #             "protein_g": 0.8,
+    #             "sodium_mg": 57,
+    #             "potassium_mg": 30,
+    #             "cholesterol_mg": 0,
+    #             "carbohydrates_total_g": 8.3,
+    #             "fiber_g": 3.0,
+    #             "sugar_g": 3.4,
+    #         }
+    #     ]
+    # }
 
     api_url = "https://api.calorieninjas.com/v1/nutrition?query="
     query = f"100g {predicted}"
     response = requests.get(
-        api_url + query, headers={"X-Api-Key": "+mmz36o7RMA5XOl77xXKPQ==L4CKZNKACIUpEv9t"}
+        api_url + query, headers={"X-Api-Key": "your calorieninjas api here"}
     )
     if response.status_code == requests.codes.ok:
         print(response.text)
@@ -37,19 +37,15 @@ def charts(predicted):
     else:
         print("Error:", response.status_code, response.text)
     dark_bg = "#1E1E1E"
-    dark_fg = "#FFFFFF"
     dark_text = "#CCCCCC"
     tk.set_appearance_mode("dark")
-    # Create CustomTkinter window
     window = tk.CTk()
     window.title("Nutrition Data")
     
     window.configure(bg=dark_bg)
-    # Create a frame for the header and charts
     header_frame = tk.CTkFrame(window, bg_color=dark_bg)
     header_frame.pack(expand=False, fill=tk.BOTH)
 
-    # Add a label for the food name header
     food_name_label = tk.CTkLabel(
         header_frame,
         text=food_data["items"][0]["name"],
@@ -72,7 +68,6 @@ def charts(predicted):
             food_data["items"][0]["carbohydrates_total_g"],
         ],
         labels=["Fat", "Protein", "Carbohydrates"],
-        #  textprops=dict(color=dark_text),
         autopct="%1.1f%%",
         startangle=90,
     )
@@ -94,7 +89,6 @@ def charts(predicted):
     ax_radar.set_xticklabels(categories, color=dark_text)
     ax_radar.set_title("Nutrient Values", color=dark_text)
 
-    # Embed Matplotlib figures into Tkinter
     canvas_pie = FigureCanvasTkAgg(fig_pie, master=frame)
     canvas_pie.draw()
     canvas_pie.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
@@ -103,5 +97,4 @@ def charts(predicted):
     canvas_radar.draw()
     canvas_radar.get_tk_widget().pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
 
-    # Run the Tkinter event loop
     window.mainloop()
