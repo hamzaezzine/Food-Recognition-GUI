@@ -27,16 +27,14 @@ Fruits and Vegetables Image Recognition Dataset Source: [Fruits and Vegetables I
   the dataset contains images of the following food items:
 
   * fruits:  banana, apple, pear, grapes, orange, kiwi, watermelon, pomegranate, pineapple, mango.  
-
    * vegetables:  cucumber, carrot, capsicum, onion, potato, lemon, tomato, raddish, beetroot, cabbage, lettuce, spinach, soy bean, cauliflower, bell pepper, chilli pepper, turnip, corn, sweetcorn, sweet potato, paprika, jalepeño, ginger, garlic, peas, eggplant.
 
 
   2. Content :   
   This dataset contains three folders:  
-
-  * train (100 images each)
-  * test (10 images each)
-  * validation (10 images each)
+    * train (100 images each)
+    * test (10 images each)
+    * validation (10 images each)
 
 
 ### Nutrition API 
@@ -71,18 +69,18 @@ Login
 ![login](screenshots/login.png)
 
 Sign up 
-![login](screenshots/signup.png)
+![Sign up ](screenshots/signup.png)
 
 Home 
-![login](screenshots/home.png)
+![Home](screenshots/home.png)
 
 Home 
-![login](screenshots/home2.png)
+![Home](screenshots/home2.png)
 
 Result 
-![login](screenshots/home3.png)
+![Result](screenshots/home3.png)
 
 Profile 
-![login](screenshots/profile.png)
+![Profile](screenshots/profile.png)
 
 
