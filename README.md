@@ -32,9 +32,9 @@ Fruits and Vegetables Image Recognition Dataset Source: [Fruits and Vegetables I
 
   2. Content :   
   This dataset contains three folders:  
-    * train (100 images each)
-    * test (10 images each)
-    * validation (10 images each)
+  * train (100 images each)
+  * test (10 images each)
+  * validation (10 images each)
 
 
 ### Nutrition API 
